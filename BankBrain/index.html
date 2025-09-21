@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BankBrain - Nigerian Banks</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+body { font-family: 'Arial', sans-serif; margin:0; padding:0; background:#f0f4f8; color:#0f172a; }
+header { background:#0ea5e9; color:#fff; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 6px rgba(0,0,0,0.1);}
+header .logo { font-size:24px; font-weight:bold; }
+header nav a { color:#fff; text-decoration:none; margin-left:20px; font-weight:bold; }
+header nav a:hover { text-decoration:underline; }
+
+.hero { text-align:center; padding:50px 20px; background: linear-gradient(135deg,#06b6d4,#22d3ee); color:#fff; }
+.hero h1 { font-size:48px; margin-bottom:10px; }
+.hero p { font-size:20px; }
+
+.search-bar { text-align:center; margin:20px; }
+.search-bar input { padding:10px 15px; width:250px; border-radius:8px; border:1px solid #ccc; }
+.search-bar button { padding:10px 15px; border:none; border-radius:8px; background:#0ea5e9; color:#fff; cursor:pointer; margin-left:10px; }
+.search-bar button:hover { background:#0284c7; }
+
+.bank-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    padding:40px 20px;
+    max-width:1200px;
+    margin:auto;
+}
+.bank-card {
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+    transition:transform 0.3s,box-shadow 0.3s;
+    cursor:pointer;
+    color:#fff;
+}
+.bank-card:hover { transform:translateY(-10px); box-shadow:0 10px 25px rgba(0,0,0,0.2); }
+.bank-card img { width:80px; margin-bottom:15px; transition: transform 0.3s; }
+.bank-card:hover img { transform: scale(1.1); }
+.bank-card h3 { font-size:20px; margin-bottom:10px; }
+.bank-card a { text-decoration:none; font-weight:bold; color:#fff; border:1px solid #fff; padding:5px 10px; border-radius:5px; transition:0.3s; }
+.bank-card a:hover { background:#fff; color:#0ea5e9; }
+
+footer { text-align:center; padding:20px; background:#0ea5e9; color:#fff; margin-top:50px; }
+
+@media(max-width:600px){ .hero h1{ font-size:36px; } .hero p{ font-size:16px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">BankBrain</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+
+<section class="hero">
+<h1>BankBrain</h1>
+<p>All Nigerian Banks USSD Codes, Transfers, and Services in one place.</p>
+</section>
+
+<div class="search-bar">
+<input type="text" id="searchInput" placeholder="Search for a bank...">
+<button onclick="searchBank()">Search</button>
+</div>
+
+<section class="bank-grid" id="bankGrid">
+  <a href="#bankGrid" class="explore-btn">Explore Banks 🚀</a>
+
+  <!-- 18 Unique Bank Cards -->
+  <div class="bank-card" data-name="Access Bank" style="background: linear-gradient(135deg,#06b6d4,#22d3ee);">
+    <img src="images/access bank.png" alt="Access Bank">
+    <h3>Access Bank</h3>
+    <a href="banks/access.html">View Codes</a>
+  </div>
+  <div class="bank-card" data-name="UBA" style="background: linear-gradient(135deg,#f43f5e,#fb7185);">
+    <img src="images/uba bank.png" alt="UBA">
+    <h3>UBA</h3>
+    <a href="banks/uba.html">View Codes</a>
+  </div>
+  <div class="bank-card" data-name="Unity Bank" style="background: linear-gradient(135deg,#22c55e,#4ade80);">
+    <img src="images/unity bank.jpg" alt="Unity Bank">
+    <h3>Unity Bank</h3>
+    <a href="banks/unity.html">View Codes</a>
+  </div>
+  <div class="bank-card" data-name="Wema Bank" style="background: linear-gradient(135deg,#f59e0b,#fcd34d);">
+    <img src="images/wema bank.jpg" alt="Wema Bank">
+    <h3>Wema Bank</h3>
+    <a href="banks/wema.html">View Codes</a>
+  </div>
+  <div class="bank-card" data-name="Zenith Bank" style="background: linear-gradient(135deg,#9333ea,#a78bfa);">
+    <img src="images/zenith.png" alt="Zenith Bank">
+    <h3>Zenith Bank</h3>
+    <a href="banks/zenith.html">View Codes</a>
+  </div>
+  <div class="bank-card" data-name="FCMB" style="background: linear-gradient(135deg,#f97316,#fb923c);">
+    <img src="images/fcmb bank.png" alt="FCMB">
+    <h3>FCMB</h3>
+    <a href="banks/fcmb.html">View Codes</a>
+  </div>
+  <div class="bank-card" data-name="Fidelity Bank" style="background: linear-gradient(135deg,#22d3ee,#06b6d4);">
+    <img src="images/fedelity bank.png" alt="Fidelity Bank">
+    <h3>Fidelity Bank</h3>
+    <a href="banks/fidelity.html">View Codes</a>
+  </div>
+  <div class="bank-card" data-name="Polaris Bank" style="background: linear-gradient(135deg,#fcd34d,#f59e0b);">
+    <img src="images/polaris bank.jpg" alt="Polaris Bank">
+    <h3>Polaris Bank</h3>
+    <a href="banks/polaris.html">View Codes</a>
+  </div>
+  <div class="bank-card" data-name="Standard Chartered" style="background: linear-gradient(135deg,#8b5cf6,#a78bfa);">
+    <img src="images/standard bank.jpg" alt="Standard Chartered">
+    <h3>Standard Chartered</h3>
+    <a href="banks/standardchartered.html">View Codes</a>
+  </div>
+  <div class="bank-card" data-name="Heritage Bank" style="background: linear-gradient(135deg,#f97316,#fb923c);">
+    <img src="images/heritage bank.png" alt="Heritage Bank">
+    <h3>Heritage Bank</h3>
+    <a href="banks/heritage.html">View Codes</a>
+  </div>
+  <div class="bank-card" data-name="Stanbic IBTC" style="background: linear-gradient(135deg,#22c55e,#16a34a);">
+    <img src="images/stanbic bank.jpg" alt="Stanbic IBTC">
+    <h3>Stanbic IBTC</h3>
+    <a href="banks/stanbic.html">View Codes</a>
+  </div>
+  <div class="bank-card" data-name="Union Bank" style="background: linear-gradient(135deg,#f59e0b,#d97706);">
+    <img src="images/union bank.jpg" alt="Union Bank">
+    <h3>Union Bank</h3>
+    <a href="banks/union.html">View Codes</a>
+  </div>
+  <div class="bank-card" data-name="GTBank" style="background: linear-gradient(135deg,#9333ea,#7c3aed);">
+    <img src="images/gt bank.png" alt="GTBank">
+    <h3>GTBank</h3>
+    <a href="banks/gtbank.html">View Codes</a>
+  </div>
+  <div class="bank-card" data-name="Ecobank" style="background: linear-gradient(135deg,#22d3ee,#06b6d4);">
+    <img src="images/eco bank.jpg" alt="Ecobank">
+    <h3>Ecobank</h3>
+    <a href="banks/ecobank.html">View Codes</a>
+  </div>
+  <div class="bank-card" data-name="Keystone Bank" style="background: linear-gradient(135deg,#f97316,#fbbf24);">
+    <img src="images/keystone bank.jpg" alt="Keystone Bank">
+    <h3>Keystone Bank</h3>
+    <a href="banks/keystone.html">View Codes</a>
+  </div>
+  <div class="bank-card" data-name="First Bank" style="background: linear-gradient(135deg,#f59e0b,#fcd34d);">
+    <img src="images/first bank.png" alt="First Bank">
+    <h3>First Bank</h3>
+    <a href="Banks/firstbank.html">View Codes</a>
+  </div>
+  <div class="bank-card" data-name="SunTrust Bank" style="background: linear-gradient(135deg,#9333ea,#a78bfa);">
+    <img src="images/suntrust bank.png" alt="SunTrust Bank">
+    <h3>SunTrust Bank</h3>
+    <a href="banks/suntrust.html">View Codes</a>
+  </div>
+</section>
+
+<footer>
+<p>© 2025 BankBrain. All rights reserved.</p>
+</footer>
+
+<script>
+function searchBank() {
+  const input = document.getElementById('searchInput').value.toLowerCase();
+  const bankCards = document.querySelectorAll('.bank-card');
+  bankCards.forEach(card => {
+    const name = card.getAttribute('data-name').toLowerCase();
+    card.style.display = name.includes(input) ? 'block' : 'none';
+  });
+}
+
+// Live search as you type
+document.getElementById('searchInput').addEventListener('keyup', searchBank);
+</script>
+
+</body>
+</html>

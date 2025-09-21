@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find My Phone - Home</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body {
+      background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+      color: white;
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    header {
+      width: 100%; padding: 20px;
+      background: rgba(0,0,0,0.5);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 1.5rem; font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .user-info { font-size: 1rem; margin-right: 10px; }
+    .logout-btn {
+      background: #ff4d6d; border: none; padding: 8px 16px;
+      border-radius: 20px; color: white; cursor: pointer; transition: 0.3s;
+    }
+    .logout-btn:hover { background: #cc0033; }
+
+    .container {
+      margin-top: 20px; background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 30px; border-radius: 20px;
+      width: 95%; max-width: 950px; text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+    h2 { margin-bottom: 15px; font-size: 2rem; }
+    p { font-size: 1rem; margin-bottom: 20px; color: #f5f5f5; }
+
+    .input-group { margin-bottom: 15px; text-align: left; }
+    label { display: block; margin-bottom: 5px; font-size: 0.9rem; }
+    input {
+      width: 100%; padding: 10px; border-radius: 8px;
+      border: none; font-size: 1rem; outline: none;
+    }
+    .btn {
+      margin: 8px; border: none; padding: 12px 25px;
+      font-size: 1rem; font-weight: bold;
+      border-radius: 30px; cursor: pointer;
+      transition: 0.3s; color: white;
+    }
+    .btn-save { background: #28a745; }
+    .btn-save:hover { background: #218838; transform: scale(1.05); }
+    .btn-delete { background: #ff4444; }
+    .btn-delete:hover { background: #cc0000; transform: scale(1.05); }
+    .btn-action { background: #007bff; }
+    .btn-action:hover { background: #0056b3; transform: scale(1.05); }
+
+    .phone-info {
+      margin-top: 15px; font-size: 1rem;
+      background: rgba(0,0,0,0.5); padding: 15px;
+      border-radius: 12px; text-align: left;
+    }
+
+    iframe {
+      margin-top: 25px; width: 100%; height: 400px;
+      border: none; border-radius: 15px;
+    }
+
+    footer {
+      margin-top: auto; padding: 15px;
+      background: rgba(0,0,0,0.5); text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* 🔔 Ringing Overlay */
+    .overlay {
+      display: none; 
+      position: fixed; 
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+    }
+
+    .iphone {
+      width: 250px;
+      height: 480px;
+      border: 6px solid #000;
+      border-radius: 30px;
+      background: #111;
+      overflow: hidden;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .screen {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, #222, #000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: lime;
+      font-size: 20px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Stronger iPhone vibration effect */
+    .ringing {
+      animation: vibrate 0.1s infinite alternate;
+      box-shadow: 0 0 20px lime, 0 0 40px lime, 0 0 60px lime;
+    }
+
+    @keyframes vibrate {
+      0% { transform: translateX(-5px); }
+      25% { transform: translateX(5px); }
+      50% { transform: translateY(-5px); }
+      75% { transform: translateY(5px); }
+      100% { transform: translateX(-5px); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    📍 Find My Phone
+    <div>
+      <span class="user-info" id="welcomeUser">Hello, User</span>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <h2>Device Dashboard</h2>
+    <p>Manage and track your devices in real-time.</p>
+
+    <!-- 📱 Phone Name + IP Form -->
+    <div class="input-group">
+      <label for="phoneName">Phone Name:</label>
+      <input type="text" id="phoneName" placeholder="e.g. iPhone 14 Pro" />
+    </div>
+
+    <div class="input-group">
+      <label for="ipAddress">IP Address:</label>
+      <input type="text" id="ipAddress" placeholder="Fetching IP..." />
+    </div>
+
+    <button class="btn btn-save" onclick="savePhoneInfo()">💾 Save Phone Info</button>
+    <button class="btn btn-delete" onclick="deletePhoneInfo()">🗑 Delete Info</button>
+
+    <!-- 📱 Display Saved Info -->
+    <div class="phone-info" id="phoneInfo">No phone info saved yet.</div>
+
+    <!-- Battery + Status -->
+    <div class="phone-info" id="batteryInfo">🔋 Battery: Checking...</div>
+
+    <!-- Action Buttons -->
+    <button class="btn btn-action" onclick="findMyPhone()">🔎 Find My Phone</button>
+    <button class="btn btn-action" onclick="ringPhone()">🔔 Ring My Phone</button>
+    <button class="btn btn-action" onclick="showLastLocation()">📍 Show Last Location</button>
+
+    <!-- Map -->
+    <iframe id="mapFrame"></iframe>
+  </div>
+
+  <footer>© 2025 Find My Phone | Secure Location Tracking</footer>
+
+  <audio id="ringtone" src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg" loop></audio>
+
+  <!-- 🔔 Ringing Overlay -->
+  <div id="ringOverlay" class="overlay">
+    <div class="iphone" id="iphone">
+      <div class="screen" id="screenText">
+        📞 Incoming Call...
+        <div id="countdown" style="margin-top:10px; font-size:18px;">⏳ 15s</div>
+        <div style="margin-top: 40px; display: flex; justify-content: center; gap: 20px;">
+          <button onclick="acceptCall()" 
+            style="background: #28a745; border: none; padding: 10px 20px; border-radius: 30px; color: white; font-size: 1rem; cursor: pointer;">
+            ✅ Accept
+          </button>
+          <button onclick="stopRing()" 
+            style="background: #dc3545; border: none; padding: 10px 20px; border-radius: 30px; color: white; font-size: 1rem; cursor: pointer;">
+            ❌ Decline
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let ringTimeout, countdownTimer;
+
+    // ===== Ensure user is logged in =====
+    window.onload = function() {
+      let user = localStorage.getItem("loggedInUser");
+      if (!user) {
+        alert("⚠️ Please login first!");
+        window.location.href = "login.html";
+      } else {
+        document.getElementById("welcomeUser").innerText = "Hello, " + user;
+        displayPhoneInfo();
+      }
+    }
+
+    // ===== Save Phone Info =====
+    function savePhoneInfo() {
+      let phoneName = document.getElementById("phoneName").value;
+      let ipAddress = document.getElementById("ipAddress").value;
+
+      if(phoneName && ipAddress) {
+        localStorage.setItem("phoneName", phoneName);
+        localStorage.setItem("ipAddress", ipAddress);
+        displayPhoneInfo();
+        alert("✅ Phone info saved!");
+      } else {
+        alert("⚠️ Please enter both phone name and IP address.");
+      }
+    }
+
+    function displayPhoneInfo() {
+      let phoneName = localStorage.getItem("phoneName");
+      let ipAddress = localStorage.getItem("ipAddress");
+      if(phoneName && ipAddress) {
+        document.getElementById("phoneInfo").innerText =
+          `📱 ${phoneName} | 🌐 IP: ${ipAddress}`;
+      } else {
+        document.getElementById("phoneInfo").innerText = "No phone info saved yet.";
+      }
+    }
+
+    // ===== Delete Phone Info =====
+    function deletePhoneInfo() {
+      if (confirm("⚠️ Are you sure you want to delete saved phone info?")) {
+        localStorage.removeItem("phoneName");
+        localStorage.removeItem("ipAddress");
+        displayPhoneInfo();
+        alert("🗑 Phone info deleted.");
+      }
+    }
+
+    // ===== Auto Detect IP =====
+    fetch("https://api.ipify.org?format=json")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("ipAddress").value = data.ip;
+      });
+
+    // ===== Battery Status =====
+    if (navigator.getBattery) {
+      navigator.getBattery().then(function(battery) {
+        function updateBatteryStatus() {
+          document.getElementById("batteryInfo").innerText =
+            `🔋 Battery: ${Math.round(battery.level * 100)}% ${battery.charging ? "(Charging)" : ""}`;
+        }
+        updateBatteryStatus();
+        battery.addEventListener('levelchange', updateBatteryStatus);
+        battery.addEventListener('chargingchange', updateBatteryStatus);
+      });
+    }
+
+    // ===== Find Phone Feature =====
+    function findMyPhone() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else {
+        alert("Geolocation not supported.");
+      }
+    }
+    function showPosition(position) {
+      let lat = position.coords.latitude;
+      let lon = position.coords.longitude;
+      let timestamp = new Date().toLocaleString();
+
+      localStorage.setItem("lastLocation", JSON.stringify({lat, lon, timestamp}));
+      document.getElementById("mapFrame").src =
+        `https://www.google.com/maps?q=${lat},${lon}&z=15&output=embed`;
+
+      alert(`📍 Location Updated at ${timestamp}`);
+    }
+    function showError(error) {
+      switch(error.code) {
+        case error.PERMISSION_DENIED: alert("❌ User denied location."); break;
+        case error.POSITION_UNAVAILABLE: alert("❌ Location unavailable."); break;
+        case error.TIMEOUT: alert("⚠️ Request timed out."); break;
+        default: alert("❌ Unknown error.");
+      }
+    }
+
+    // ===== Ring Phone with Countdown =====
+    function ringPhone() {
+      let sound = document.getElementById("ringtone");
+      let overlay = document.getElementById("ringOverlay");
+      let iphone = document.getElementById("iphone");
+      let screen = document.getElementById("screenText");
+      let countdownEl = document.getElementById("countdown");
+
+      overlay.style.display = "flex";
+      iphone.classList.add("ringing");
+      screen.style.color = "lime";
+      screen.childNodes[0].textContent = "📞 Incoming Call...";
+      let timeLeft = 15;
+      countdownEl.textContent = `⏳ ${timeLeft}s`;
+
+      sound.currentTime = 0;
+      sound.play();
+
+      countdownTimer = setInterval(() => {
+        timeLeft--;
+        countdownEl.textContent = `⏳ ${timeLeft}s`;
+
+        if (timeLeft <= 0) {
+          clearInterval(countdownTimer);
+          screen.innerHTML = "📵 Missed Call";
+          screen.style.color = "red";
+          sound.pause();
+          sound.currentTime = 0;
+          setTimeout(stopRing, 2000);
+        }
+      }, 1000);
+    }
+
+    function acceptCall() {
+      clearInterval(countdownTimer);
+      let screen = document.getElementById("screenText");
+      screen.innerHTML = "📲 Call Connected";
+      screen.style.color = "limegreen";
+
+      let sound = document.getElementById("ringtone");
+      sound.pause();
+      sound.currentTime = 0;
+
+      setTimeout(stopRing, 2000);
+    }
+
+    function stopRing() {
+      clearInterval(countdownTimer);
+      let sound = document.getElementById("ringtone");
+      let overlay = document.getElementById("ringOverlay");
+      let iphone = document.getElementById("iphone");
+
+      overlay.style.display = "none";
+      iphone.classList.remove("ringing");
+      sound.pause();
+      sound.currentTime = 0;
+    }
+
+    // ===== Show Last Location =====
+    function showLastLocation() {
+      let lastLoc = localStorage.getItem("lastLocation");
+      if (lastLoc) {
+        let {lat, lon, timestamp} = JSON.parse(lastLoc);
+        document.getElementById("mapFrame").src =
+          `https://www.google.com/maps?q=${lat},${lon}&z=15&output=embed`;
+        alert(`📍 Last Location: Updated at ${timestamp}`);
+      } else {
+        alert("No last location saved yet.");
+      }
+    }
+
+    // ===== Logout =====
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      alert("You have been logged out.");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

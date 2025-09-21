@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExploreEase - Destinations</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+  <header class="navbar">
+    <div class="logo">🌍 ExploreEase</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="destination.html" class="active">Destinations</a></li>
+        <li><a href="guides.html">Guides</a></li>
+        <li><a href="booking.html">Booking</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="login.html">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+ 
+  <section class="page-header">
+    <h1>🌟 Explore Destinations</h1>
+    <p>Find your next adventure by region, budget, or type</p>
+  </section>
+
+ 
+  <section class="filters">
+    <select id="regionFilter">
+      <option value="">🌍 All Regions</option>
+      <option value="europe">Europe</option>
+      <option value="asia">Asia</option>
+      <option value="africa">Africa</option>
+      <option value="americas">Americas</option>
+      <option value="middleeast">Middle East</option>
+      <option value="oceania">Oceania</option>
+    </select>
+    <select id="budgetFilter">
+      <option value="">💰 All Budgets</option>
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+    </select>
+    <select id="typeFilter">
+      <option value="">🏖️ All Types</option>
+      <option value="adventure">Adventure</option>
+      <option value="beach">Beach</option>
+      <option value="heritage">Heritage</option>
+      <option value="luxury">Luxury</option>
+    </select>
+    <button onclick="applyFilters()">Apply Filters</button>
+  </section>
+
+  
+  <section class="destinations" id="destList">
+    
+    
+  </section>
+
+  
+  <button id="backToTop" title="Back to Top">⬆️</button>
+
+  
+  <footer>
+    <p>© 2025 ExploreEase | Travel Made Easy</p>
+    <div class="socials">
+      <a href="#">🌐</a>
+      <a href="#">📘</a>
+      <a href="#">🐦</a>
+      <a href="#">📸</a>
+    </div>
+  </footer>
+</body>
+</html>

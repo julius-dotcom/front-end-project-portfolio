@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - BankBrain</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      margin:0; padding:0;
+      font-family:'Poppins',sans-serif;
+      color:#0f172a;
+      background:#f9fafb;
+    }
+
+    header {
+      background:#0ea5e9; color:#fff;
+      padding:15px 30px;
+      display:flex; justify-content:space-between; align-items:center;
+      box-shadow:0 4px 10px rgba(0,0,0,0.15);
+      position:sticky; top:0; z-index:1000;
+    }
+    header .logo { font-size:24px; font-weight:bold; }
+    header nav a {
+      color:#fff; margin-left:20px; font-weight:500; text-decoration:none;
+    }
+    header nav a:hover { text-decoration:underline; }
+
+    section { padding:70px 20px; text-align:center; }
+    h1, h2 { margin-bottom:20px; animation:fadeInDown 1s ease forwards; }
+    p, ul { animation:fadeInUp 1s ease forwards; }
+
+    /* Background sections */
+    .intro {
+      background:linear-gradient(135deg,#06b6d4,#22d3ee);
+      color:#fff;
+      padding:80px 20px;
+    }
+    .profile { background:#fff; }
+    .mission {
+      background:linear-gradient(135deg,#f59e0b,#fcd34d);
+      color:#fff;
+    }
+    .values { background:#f9fafb; }
+    .timeline {
+      background:linear-gradient(135deg,#9333ea,#a78bfa);
+      color:#fff;
+    }
+    .team { background:#f9fafb; }
+    .future {
+      background:linear-gradient(135deg,#f43f5e,#fb7185);
+      color:#fff;
+    }
+
+    /* Highlight boxes */
+    .highlight-box {
+      background:rgba(255,255,255,0.15);
+      padding:20px;
+      border-radius:12px;
+      margin:20px auto;
+      max-width:700px;
+      box-shadow:0 6px 15px rgba(0,0,0,0.1);
+      transition:transform 0.3s, box-shadow 0.3s;
+    }
+    .highlight-box:hover {
+      transform:scale(1.03);
+      box-shadow:0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    /* Profile */
+    .profile img {
+      width:150px; border-radius:50%;
+      margin-bottom:20px;
+      box-shadow:0 6px 15px rgba(0,0,0,0.2);
+    }
+    .profile p {
+      max-width:700px; margin:10px auto; font-size:1.1rem; line-height:1.6;
+    }
+
+    /* Values */
+    .value-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px; margin-top:30px;
+    }
+    .value-box {
+      background:#fff; padding:25px;
+      border-radius:12px; text-align:center;
+      box-shadow:0 6px 12px rgba(0,0,0,0.1);
+      transition:0.3s;
+    }
+    .value-box:hover { transform:translateY(-8px); }
+
+    /* Team */
+    .team-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px; margin-top:30px;
+    }
+    .team-card {
+      background:#fff; padding:20px;
+      border-radius:12px;
+      box-shadow:0 6px 12px rgba(0,0,0,0.1);
+      transition:0.3s;
+    }
+    .team-card:hover { transform:scale(1.05); }
+    .team-card img {
+      width:120px; border-radius:50%; margin-bottom:15px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      text-align:center; padding:20px;
+      background:#0ea5e9; color:#fff;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from{opacity:0; transform:translateY(20px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+    @keyframes fadeInDown {
+      from{opacity:0; transform:translateY(-20px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">BankBrain</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- Intro -->
+<section class="intro">
+  <h1>Welcome to <span>BankBrain</span></h1>
+  <p class="tagline">💡 Your all-in-one gateway to smart, colorful, and stress-free banking in Nigeria.</p>
+
+  <div class="intro-box">
+    <p>
+      <strong>BankBrain</strong> is more than just USSD codes.  
+      It’s a <em>vision</em> to bring all Nigerian banks together  
+      on one interactive platform where banking is faster,  
+      clearer, and fun to use.
+    </p>
+    <p>
+      Whether you’re checking your balance, sending money,  
+      or simply learning about your bank’s services —  
+      <strong>BankBrain</strong> makes it effortless.
+    </p>
+  </div>
+
+  <a href="index.html" class="cta-btn">🚀 Explore Banks</a>
+</section>
+
+<!-- Profile -->
+<section class="profile">
+  <img src="images/first profile.png" alt="Founder Image">
+  <h2>Meet the Founder</h2>
+  <p>
+    🎓 Hello, I’m <b>Ricardo</b>, the creator of <b>BankBrain</b>.  
+    I am a passionate Computer Science student, full-stack developer in training,  
+    and a problem solver who believes technology should make life simpler.
+  </p>
+  <p>
+    💡 I started BankBrain with the vision of creating a single colorful platform  
+    that allows Nigerians to access all their banks in one place,  
+    without stress or confusion.  
+  </p>
+  <div class="highlight-box">
+    <h3>✨ My Philosophy</h3>
+    <p><em>"Always believe in yourself — because great ideas grow from self-belief and persistence."</em></p>
+  </div>
+</section>
+
+<!-- Mission -->
+<section class="mission">
+  <h2>Our Mission</h2>
+  <div class="highlight-box">
+    <p>To empower Nigerians with quick, secure, and reliable access to banking services through simple mobile solutions.</p>
+  </div>
+</section>
+
+<!-- Values -->
+<section class="values">
+  <h2>Our Core Values</h2>
+  <div class="value-grid">
+    <div class="value-box">💡 Innovation <p>We keep improving to serve users better.</p></div>
+    <div class="value-box">⚡ Speed <p>Instant access to all banks in one tap.</p></div>
+    <div class="value-box">🔒 Security <p>Your trust is our top priority.</p></div>
+    <div class="value-box">🎨 Simplicity <p>Beautiful design, easy experience.</p></div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section class="timeline">
+  <h2>Our Journey</h2>
+  <ul>
+    <li>2024 – Idea for BankBrain was born.</li>
+    <li>2025 – First version launched with 18 Nigerian banks.</li>
+    <li>2026 – Expanding to include tips, FAQs, and smart tools.</li>
+  </ul>
+</section>
+
+<!-- Team -->
+<section class="team">
+  <h2>Meet the Team</h2>
+  <div class="team-grid">
+    <div class="team-card">
+      <img src="images/Profile Pic.jpg" alt="Founder">
+      <h3>Ricardo</h3>
+      <p>Founder & Developer</p>
+    </div>
+    <div class="team-card">
+      <img src="images/amara.jpg" alt="Designer">
+      <h3>Amara</h3>
+      <p>UI/UX Designer</p>
+    </div>
+    <div class="team-card">
+      <img src="images/chinedu.jpg" alt="Marketer">
+      <h3>Chinedu</h3>
+      <p>Growth & Marketing</p>
+    </div>
+  </div>
+</section>
+
+<!-- Future -->
+<section class="future">
+  <h2>The Future of BankBrain</h2>
+  <p>We are building smarter banking tools with AI, financial education resources, and new features that will make mobile banking effortless across Africa.</p>
+</section>
+
+<footer>
+  <p>© 2025 BankBrain. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

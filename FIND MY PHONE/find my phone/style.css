@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #1d2671, #c33764);
+  color: white;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(0,0,0,0.6);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+button {
+  background: #ff4d6d;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+}
+button:hover {
+  background: #cc0033;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.btn-main {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #007bff;
+  border-radius: 25px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+.btn-main:hover {
+  background: #0056b3;
+}
+
+/* Features */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.card {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Login */
+.login-container {
+  max-width: 400px;
+  margin: 100px auto;
+  background: rgba(0,0,0,0.4);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.login-container input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+}
+
+.login-container button {
+  width: 95%;
+  padding: 12px;
+  margin-top: 10px;
+}
+.battery-container {
+  margin-top: 10px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 200px;
+  height: 25px;
+  position: relative;
+}
+
+.battery-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #28a745, #85e085);
+  transition: width 0.5s ease-in-out;
+}
+
+.battery-text {
+  margin-top: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+}

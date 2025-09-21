@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - ExploreEase</title>
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <div class="login-wrapper">
+    <div class="login-card">
+      <div class="logo">
+        <h1>ExploreEase</h1>
+        <p>Login to your account</p>
+      </div>
+      <form id="loginForm">
+        <div class="input-group">
+          <input type="email" id="loginEmail" required />
+          <label for="loginEmail">Email</label>
+        </div>
+        <div class="input-group">
+          <input type="password" id="loginPassword" required />
+          <label for="loginPassword">Password</label>
+        </div>
+        <button type="submit">Login</button>
+        <p id="loginMessage" style="text-align:center;margin-top:10px;"></p>
+      </form>
+      <p class="forgot-link"><a href="#" id="forgotPasswordLink">Forgot Password?</a></p>
+
+      <p class="signup-link">Don’t have an account? <a href="signup.html">Sign Up</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const email = document.getElementById("loginEmail").value.trim();
+      const password = document.getElementById("loginPassword").value;
+      const msg = document.getElementById("loginMessage");
+
+      if(!email || !password){
+        msg.textContent = "❌ Please enter email and password";
+        msg.style.color = "red";
+        return;
+      }
+
+      // Get users from localStorage
+      const users = JSON.parse(localStorage.getItem("users") || "[]");
+      const user = users.find(u => u.email === email && u.password === password);
+
+      if(user){
+        msg.textContent = `✅ Login successful! Redirecting...`;
+        msg.style.color = "green";
+        localStorage.setItem("loggedInUser", email);
+        this.reset();
+
+        // Redirect to index.html after 1s
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 1000);
+      } else {
+        msg.textContent = "❌ Invalid email or password";
+        msg.style.color = "red";
+      }
+    });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Find My Phone</title>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff9966, #ff5e62);
+      color: white;
+      display: flex; justify-content: center; align-items: center;
+      height: 100vh; font-family: Arial, sans-serif;
+    }
+    .form-box {
+      background: rgba(0,0,0,0.5); padding: 30px;
+      border-radius: 12px; width: 300px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    }
+    h2 { text-align: center; margin-bottom: 20px; }
+    input {
+      width: 100%; padding: 10px; margin: 8px 0;
+      border: none; border-radius: 8px;
+    }
+    button {
+      width: 100%; padding: 12px; margin-top: 12px;
+      background: #007bff; border: none; border-radius: 8px;
+      color: white; font-size: 1rem; cursor: pointer;
+    }
+    button:hover { background: #0056b3; }
+    a { color: #ffcc00; text-decoration: none; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>Sign Up</h2>
+    <input type="text" id="signupName" placeholder="Full Name" required>
+    <input type="email" id="signupEmail" placeholder="Email" required>
+    <input type="password" id="signupPassword" placeholder="Password" required>
+    <button onclick="signup()">Sign Up</button>
+    <p style="margin-top:10px;text-align:center;">
+      Already have an account? <a href="login.html">Login</a>
+    </p>
+  </div>
+
+  <script>
+    function signup() {
+      let name = document.getElementById("signupName").value;
+      let email = document.getElementById("signupEmail").value;
+      let password = document.getElementById("signupPassword").value;
+
+      if (name && email && password) {
+        // Save user (fake registration for now)
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("userName", name);
+        localStorage.setItem("userEmail", email);
+        alert("✅ Sign up successful!");
+        window.location.href = "home.html"; // 👉 Redirect to home
+      } else {
+        alert("⚠️ Please fill all fields.");
+      }
+    }
+  </script>
+</body>
+</html>

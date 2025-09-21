@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExploreEase - Travel Made Easy</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+  <div id="bookingPopup" class="popup">
+  <div class="popup-content">
+    <span class="closeBtn">&times;</span>
+    <h2>📅 Plan Your Trip</h2>
+    <form id="popupBookingForm">
+      <input type="text" id="popupName" placeholder="Your Name" required>
+      <input type="email" id="popupEmail" placeholder="Your Email" required>
+      <input type="text" id="popupDestination" placeholder="Destination" required>
+      <button type="submit">Book Now</button>
+    </form>
+    <div id="popupMessage"></div>
+  </div>
+</div>
+
+  
+  <header class="navbar">
+    <div class="logo">🌍 ExploreEase</div>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="destination.html">Destinations</a></li>
+        <li><a href="guides.html">Guides</a></li>
+        <li><a href="booking.html">Booking</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="login.html">Logout</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+
+  
+  <section class="hero">
+    <h1>Discover the world with <span>ease</span></h1>
+    <p>Plan your next adventure effortlessly</p>
+    <a href="booking.html" class="btn">Start Planning 🚀</a>
+  </section>
+
+ 
+  <section class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search destinations...">
+    <button onclick="searchDestinations()" class="dest">🔍 Search</button>
+  </section>
+
+  
+  <section class="featured">
+    <h2>🌟 Popular Destinations</h2>
+    <div class="cards" id="destinationList">
+      <div class="card" data-region="europe" data-budget="high" data-type="heritage">
+        <img src="images/paris.jpg" alt="Paris">
+        <h3>Paris, France</h3>
+        <p>The city of love & lights ✨</p>
+        <a href="https://maps.google.com?q=Paris" target="_blank" class="btn">View on Map</a>
+      </div>
+      <div class="card" data-region="middleeast" data-budget="high" data-type="luxury">
+        <img src="images/nigeria.jpg" alt="Dubai">
+        <h3>Nigeria 🇳🇬</h3>
+        <p>The land of culture & energy 🌍🔥🏜️</p>
+        <a href="https://google.com/maps?q=nigeria" target="_blank" class="btn">View on Map</a>
+      </div>
+      <div class="card" data-region="asia" data-budget="medium" data-type="heritage">
+        <img src="images/india.jpg" alt="Tokyo">
+        <h3>India</h3>
+        <p>The land of colors & traditions 🌸🕌🏮</p>
+        <a href="https://maps.google.com?q=India" target="_blank" class="btn">View on Map</a>
+      </div>
+     
+    </div>
+  </section>
+
+  
+  <section class="newsletter">
+    <h2>📩 Join Our Travel Community</h2>
+    <p>Get the best deals & tips straight to your inbox.</p>
+    <form id="newsletterForm">
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  
+  <button id="backToTop" title="Back to Top">⬆️</button>
+
+  
+  <footer>
+    <p>© 2025 ExploreEase | Travel Made Easy</p>
+    <div class="socials">
+      <a href="#">🌐</a>
+      <a href="#">📘</a>
+      <a href="#">🐦</a>
+      <a href="#">📸</a>
+    </div>
+    <h1 class="owner">Developed by Dev Squad</h1>
+  </footer>
+  <button id="backToTop">⬆️ Top</button>
+
+</body>
+</html>

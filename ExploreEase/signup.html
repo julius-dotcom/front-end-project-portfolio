@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up - ExploreEase</title>
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <div class="login-wrapper">
+    <div class="login-card">
+      <div class="logo">
+        <h1>ExploreEase</h1>
+        <p>Create your account</p>
+      </div>
+      <form id="signupForm">
+        <div class="input-group">
+          <input type="text" id="signupName" required />
+          <label for="signupName">Full Name</label>
+        </div>
+        <div class="input-group">
+          <input type="email" id="signupEmail" required />
+          <label for="signupEmail">Email</label>
+        </div>
+        <div class="input-group">
+          <input type="password" id="signupPassword" required />
+          <label for="signupPassword">Password</label>
+        </div>
+        <div class="input-group">
+          <input type="password" id="signupConfirm" required />
+          <label for="signupConfirm">Confirm Password</label>
+        </div>
+        <button type="submit">Sign Up</button>
+        <p id="signupMessage" style="text-align:center;margin-top:10px;"></p>
+      </form>
+      
+      <p class="signup-link">Already have an account? <a href="login.html">Login</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const name = document.getElementById("signupName").value.trim();
+      const email = document.getElementById("signupEmail").value.trim();
+      const password = document.getElementById("signupPassword").value;
+      const confirm = document.getElementById("signupConfirm").value;
+      const msg = document.getElementById("signupMessage");
+
+      if(password.length < 6){
+        msg.textContent = "❌ Password must be at least 6 characters";
+        msg.style.color = "red";
+        return;
+      }
+
+      if(password !== confirm){
+        msg.textContent = "❌ Passwords do not match";
+        msg.style.color = "red";
+        return;
+      }
+
+      // Save user in localStorage
+      let users = JSON.parse(localStorage.getItem("users") || "[]");
+      users.push({ name, email, password });
+      localStorage.setItem("users", JSON.stringify(users));
+
+      // Success message
+      msg.textContent = `✅ Sign Up successful! Redirecting...`;
+      msg.style.color = "green";
+      this.reset();
+
+      // Redirect to login page after 1.5s
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 1500);
+    });
+  </script>
+</body>
+</html>

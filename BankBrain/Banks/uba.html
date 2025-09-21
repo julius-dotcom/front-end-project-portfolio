@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UBA Codes - BankBrain</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+<div class="logo">BankBrain</div>
+<nav>
+<a href="../index.html">Home</a>
+<a href="../about.html">About</a>
+<a href="../contact.html">Contact</a>
+</nav>
+</header>
+
+<section class="bank-hero" style="background: linear-gradient(135deg,#6366f1,#818cf8);">
+<img src="../images/uba bank.png" alt="UBA" style="width:100px;">
+<h1>UBA Codes</h1>
+<p>All essential USSD codes and instructions for UBA.</p>
+</section>
+
+<section class="bank-features feature-animate" style="background: linear-gradient(to right,#818cf8,#a5b4fc);">
+<h2>Account Management</h2>
+<ul>
+<li>Check Balance: <a href="tel:*919#"><strong>*919#</strong></a></li>
+<li>Account Statement: <a href="tel:*919*0#"><strong>*919*0#</strong></a></li>
+<li>Block Card: <a href="tel:0700-919-000"><strong>Call 0700-919-000</strong></a></li>
+<li>Open New Account: <strong>Visit branch or app</strong></li>
+</ul>
+</section>
+
+<section class="bank-features feature-animate" style="background: linear-gradient(to right,#6366f1,#818cf8);">
+<h2>Transfers & Payments</h2>
+<ul>
+<li>Transfer to Own Account: <a href="tel:*919*Recipient*Amount#"><strong>*919*Recipient*Amount#</strong></a></li>
+<li>Transfer to Other Banks: <a href="tel:*919*BankCode*Recipient*Amount#"><strong>*919*BankCode*Recipient*Amount#</strong></a></li>
+<li>Pay Bills: <a href="tel:*919*BillerCode*Amount#"><strong>*919*BillerCode*Amount#</strong></a></li>
+<li>Buy Airtime/Data: <a href="tel:*919*Amount#"><strong>*919*Amount#</strong></a></li>
+</ul>
+</section>
+
+<section class="bank-features feature-animate" style="background: linear-gradient(to right,#22c55e,#4ade80);">
+<h2>Cards & Loans</h2>
+<ul>
+<li>Activate Card: <strong>Call customer care</strong></li>
+<li>Request Loan Info: <strong>Visit branch or app</strong></li>
+</ul>
+</section>
+
+<section class="bank-features feature-animate" style="background: linear-gradient(to right,#f59e0b,#fcd34d);">
+<h2>Bank Services</h2>
+<ul>
+<li>Customer Care: <strong>0700-919-000</strong></li>
+<li>Locate ATM/Branch: <strong>Use app or website</strong></li>
+<li>Request Cheque Book: <strong>Call or app</strong></li>
+</ul>
+</section>
+
+<section class="bank-tips feature-animate" style="background: linear-gradient(to right,#9333ea,#a78bfa);">
+<h2>Tips & Security</h2>
+<ul>
+<li>Keep your PIN confidential</li>
+<li>Avoid public Wi-Fi for banking</li>
+<li>Verify recipient before transfers</li>
+</ul>
+</section>
+
+<section class="simulate-transfer" style="background: linear-gradient(to right,#22c55e,#4ade80); padding:30px; border-radius:15px; margin:20px 50px; color:#fff;">
+<h2>Transfer Simulator</h2>
+<input type="text" id="recipient" placeholder="Recipient Account" style="padding:10px; margin-right:10px;">
+<input type="number" id="amount" placeholder="Amount" style="padding:10px; margin-right:10px;">
+<button onclick="simulateTransfer()" style="padding:10px 20px;">Transfer</button>
+<p id="transferMessage" style="margin-top:10px;"></p>
+</section>
+
+<a href="../index.html" class="btn back-btn">Back to Home</a>
+
+<footer>
+<p>© 2025 BankBrain. All rights reserved.</p>
+</footer>
+
+<script>
+function simulateTransfer(){
+const recipient = document.getElementById('recipient').value;
+const amount = document.getElementById('amount').value;
+if(recipient && amount){
+document.getElementById('transferMessage').textContent =
+`Success! ₦${amount} simulated sent to ${recipient}.`;
+}else{
+document.getElementById('transferMessage').textContent =
+'Please enter recipient and amount.';
+}
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Ricardo</title>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <link rel="stylesheet" href="css/style.css"/>
+  
+  <style>
+    /* ===== Body & Background ===== */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+      min-height: 100vh;
+    }
+    a { color: #ffd700; text-decoration: none; transition: 0.3s; }
+    a:hover { color: #fff; }
+
+    /* ===== Header ===== */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo { font-size: 1.8rem; font-weight: bold; }
+    nav ul { display: flex; list-style: none; gap: 2rem; }
+    nav ul li a.active { font-weight: bold; border-bottom: 2px solid #ffd700; }
+    .menu-toggle { display: none; cursor: pointer; font-size: 1.8rem; }
+
+    /* ===== About Section ===== */
+    .about {
+      max-width: 1000px;
+      margin: 4rem auto;
+      padding: 3rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+    .about-container {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .about-img img {
+      width: 300px;
+      border-radius: 20px;
+      border: 2px solid #ffd700;
+      transition: transform 0.3s;
+    }
+    .about-img img:hover { transform: scale(1.05); }
+
+    .about-content h2 { font-size: 2.5rem; margin-bottom: 1rem; color: #ffd700; }
+    .about-content p { margin-bottom: 1rem; line-height: 1.6; }
+    .highlight { color: #ffd700; font-weight: bold; }
+
+    /* ===== Signature Quote ===== */
+    blockquote.signature-quote {
+      border-left: 4px solid #ffd700;
+      padding-left: 1rem;
+      font-style: italic;
+      margin: 1rem 0;
+    }
+    blockquote.signature-quote .signature { display: block; margin-top: 0.5rem; font-weight: bold; }
+
+    /* ===== Stat Cards ===== */
+    .about-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.2);
+      border-radius: 15px;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    .stat-card h3 { font-size: 2rem; color: #ffd700; margin-bottom: 0.5rem; }
+
+    /* ===== Timeline Section ===== */
+    .timeline {
+      max-width: 900px;
+      margin: 5rem auto;
+      position: relative;
+    }
+    .timeline h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #ffd700; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background: #ffd700;
+      opacity: 0.3;
+    }
+
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 1rem 2rem;
+      box-sizing: border-box;
+    }
+    .timeline-item:nth-child(odd) { left: 0; text-align: right; }
+    .timeline-item:nth-child(even) { left: 50%; text-align: left; }
+
+    .timeline-dot {
+      position: absolute;
+      top: 1rem;
+      width: 25px;
+      height: 25px;
+      background: #ffd700;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #000;
+      z-index: 1;
+    }
+    .timeline-item:nth-child(odd) .timeline-dot { right: -12px; }
+    .timeline-item:nth-child(even) .timeline-dot { left: -12px; }
+
+    .timeline-content {
+      background: rgba(255,255,255,0.2);
+      padding: 1rem 1.5rem;
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      display: inline-block;
+      max-width: 400px;
+    }
+    .timeline-content .year {
+      font-weight: bold;
+      color: #ffd700;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      font-size: 1rem;
+      color: #ffd700;
+    }
+
+    /* ===== Responsive ===== */
+    @media(max-width:768px){
+      nav ul { display: none; flex-direction: column; gap: 1rem; }
+      nav.active ul { display: flex; }
+      .menu-toggle { display: block; }
+      .about-container { flex-direction: column; align-items: center; }
+      .timeline-item, .timeline-item:nth-child(even), .timeline-item:nth-child(odd) {
+        width: 100%;
+        left: 0;
+        text-align: left;
+        padding-left: 3rem;
+        margin-bottom: 2rem;
+      }
+      .timeline-dot { left: 0 !important; right: auto !important; }
+      .timeline::before { left: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">Ricardo</div>
+    <nav id="navbar">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="contact me .html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <!-- About Section -->
+  <section class="about">
+    <div class="about-container">
+      <div class="about-img">
+        <img src="image/ricardo.png" alt="Ricardo">
+      </div>
+      <div class="about-content">
+        <h2>About Me</h2>
+        <p>Hi, I'm <strong>Ricardo</strong> 👋. A passionate <span class="highlight">Full Stack Developer</span> who turns ideas into user-friendly digital solutions.</p>
+        <p>I specialize in <span class="highlight">web development</span>, <span class="highlight">Cloud Computing</span>, and <span class="highlight">Cybersecurity</span> — combining creativity, functionality, and security to build innovative and reliable experiences.</p>
+        <p>Whether designing smooth interfaces, building scalable systems, or securing applications, my goal is to use technology to make life smarter, safer, and more connected 🚀.</p>
+
+        <blockquote class="signature-quote">
+          <em>"Great code isn’t just functional — it’s secure, scalable, and built for the future."</em>
+          <span class="signature">— Ricardo ✍️</span>
+        </blockquote>
+
+        <!-- Stat Cards -->
+        <div class="about-stats">
+          <div class="stat-card">
+            <h3>3+</h3>
+            <p>Projects Completed</p>
+          </div>
+          <div class="stat-card">
+            <h3>2+</h3>
+            <p>Years of Coding</p>
+          </div>
+          <div class="stat-card">
+            <h3>∞</h3>
+            <p>Passion for Tech</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="timeline">
+    <h2>My Journey</h2>
+
+    <div class="timeline-item">
+      <div class="timeline-dot">💡</div>
+      <div class="timeline-content">
+        <span class="year">2023</span>
+        <p>Took the first bold step into <strong>coding and web development</strong>.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot">⚡</div>
+      <div class="timeline-content">
+        <span class="year">2024</span>
+        <p>Mastered <strong>JavaScript</strong> and <strong>Full Stack Development</strong> through hands-on projects.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot">🚀</div>
+      <div class="timeline-content">
+        <span class="year">2025</span>
+        <p>Created <strong>BankBrain</strong>, <strong>ExploreEase</strong>, and <strong>Find My Phone</strong>. Launched my portfolio website.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Ricardo | Built with ❤️</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navbar').classList.toggle('active');
+    }
+
+    // ScrollReveal animations
+    ScrollReveal().reveal('.about-img', { delay: 200, origin: 'left', distance: '50px', duration: 1000 });
+    ScrollReveal().reveal('.about-content', { delay: 300, origin: 'right', distance: '50px', duration: 1000 });
+    ScrollReveal().reveal('.stat-card', { interval: 200, origin: 'bottom', distance: '30px', duration: 800 });
+    ScrollReveal().reveal('.timeline-item', { interval: 250, origin: 'bottom', distance: '40px', duration: 900 });
+  </script>
+</body>
+</html>

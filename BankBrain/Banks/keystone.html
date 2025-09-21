@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keystone Bank Codes - BankBrain</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+body { font-family:'Arial', sans-serif; margin:0; padding:0; background:#f0f4f8; color:#0f172a; }
+header { background:#0ea5e9; color:#fff; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 6px rgba(0,0,0,0.1);}
+header .logo { font-size:24px; font-weight:bold; }
+header nav a { color:#fff; text-decoration:none; margin-left:20px; font-weight:bold; }
+header nav a:hover { text-decoration:underline; }
+
+.bank-hero { text-align:center; padding:50px 20px; background: linear-gradient(135deg,#f97316,#fb923c); color:#fff; }
+.bank-hero h1 { font-size:48px; margin-bottom:10px; }
+.bank-hero p { font-size:20px; }
+
+.bank-features, .bank-tips { max-width:900px; margin:40px auto; padding:25px; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.1); animation:fadeIn 1s ease-in-out; }
+.bank-features h2, .bank-tips h2 { margin-bottom:15px; }
+.bank-features ul, .bank-tips ul { list-style-type:none; padding:0; }
+.bank-features ul li, .bank-tips ul li { margin-bottom:12px; font-size:16px; }
+
+.bank-features.account { background:#fff; color:#0f172a; }
+.bank-features.codes { background:#e0f7fa; color:#0f172a; }
+.bank-tips { background:#fff3e0; color:#0f172a; }
+
+.btn { display:inline-block; padding:12px 20px; margin:20px auto; text-align:center; background:#0ea5e9; color:#fff; border-radius:8px; text-decoration:none; font-weight:bold; transition: background 0.3s; }
+.btn:hover { background:#0284c7; }
+
+footer { text-align:center; padding:20px; background:#0ea5e9; color:#fff; margin-top:50px; }
+
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(20px);}
+  to {opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">BankBrain</div>
+<nav>
+<a href="../index.html">Home</a>
+<a href="../about.html">About</a>
+<a href="../contact.html">Contact</a>
+</nav>
+</header>
+
+<section class="bank-hero">
+<h1>Keystone Bank Codes</h1>
+<p>All essential USSD codes and instructions for Keystone Bank.</p>
+</section>
+
+<section class="bank-features account">
+<h2>How to Use USSD Banking</h2>
+<ul>
+<li>Dial: <strong>*7111#</strong> from your bank-registered phone number.</li>
+<li>Enter: your NUBAN account number.</li>
+<li>Create: a PIN if prompted.</li>
+<li>Use: the PIN to authenticate any financial transaction.</li>
+</ul>
+</section>
+
+<section class="bank-features codes">
+<h2>Common USSD Codes</h2>
+<ul>
+<li>Balance Enquiry: <strong>*7111*00#</strong></li>
+<li>Airtime Self-Recharge: <strong>*7111*amount#</strong></li>
+<li>Airtime for Others: <strong>*7111*amount*PhoneNumber#</strong></li>
+<li>Data Top-Up: <strong>*7111*5#</strong></li>
+<li>Panic Code (Freeze Account): <strong>*7111*911#</strong></li>
+</ul>
+</section>
+
+<section class="bank-tips">
+<h2>Tips & Security</h2>
+<ul>
+<li>Keep your PIN confidential and never share it.</li>
+<li>Always verify recipient account before transfers.</li>
+<li>Avoid using public Wi-Fi for USSD banking.</li>
+<li>Contact Keystone Bank customer care if suspicious activity occurs.</li>
+</ul>
+</section>
+
+<a href="../index.html" class="btn">Back to Home</a>
+
+<footer>
+<p>© 2025 BankBrain. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
